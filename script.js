@@ -34,3 +34,20 @@ btn.addEventListener('click', () => {
         }
     }
 });
+
+
+
+const modoToggle = document.getElementById('modoToggle');
+const modoLabel = document.getElementById('modoToggleLabel');
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('modo_tema', theme);
+  modoToggle.checked = (theme === 'dark');
+  modoLabel.textContent = theme === 'dark' ? '🌙' : '🌞';
+}
+// Elegir desde localStorage o por defecto claro
+const savedTheme = localStorage.getItem('modo_tema');
+setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+modoToggle.addEventListener('change', () => {
+  setTheme(modoToggle.checked ? 'dark' : 'light');
+});

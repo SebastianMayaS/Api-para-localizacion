@@ -6,14 +6,60 @@
   font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
 }
 
+:root {
+  --clr-bg-light: linear-gradient(135deg, #8572b0 0%, #e5a6d1 100%);
+  --clr-bg-dark: linear-gradient(135deg, #232526 0%, #000000 100%);
+  --clr-txt-light: #222;
+  --clr-txt-dark: #eee;
+}
+
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+  background: var(--clr-bg-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #222;
+  color: var(--clr-txt-light);
+}
+
+/* Modo oscuro */
+body[data-theme='dark'] {
+  background: var(--clr-bg-dark);
+  color: var(--clr-txt-dark);
+}
+
+body[data-theme='dark'] #mensaje {
+  background: rgba(34, 49, 77, 0.85);
+  color: #fff;
+}
+
+body[data-theme='dark'] h2 {
+  color: #fefdff;
+  text-shadow: 1px 2px 14px rgba(0,0,0,0.2);
+}
+
+body[data-theme='dark'] button#btnUbicacion {
+  background: linear-gradient(90deg, #434343 0%, #000000 100%);
+  color: #fff;
+}
+
+body[data-theme='dark'] button#btnUbicacion:hover, 
+body[data-theme='dark'] button#btnUbicacion:focus {
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+}
+
+/* Switch de modo claro/oscuro */
+.modo-switch {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  z-index: 10;
+  gap: 0.5em;
+  user-select: none;
 }
 
 h2 {
@@ -70,5 +116,10 @@ button#btnUbicacion:hover, button#btnUbicacion:focus {
   #mensaje {
     font-size: 0.98rem;
     padding: 1rem 0.7rem;
+  }
+  .modo-switch {
+    font-size: 0.85rem;
+    top: 0.7rem;
+    right: 0.6rem;
   }
 }
